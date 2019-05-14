@@ -1,0 +1,22 @@
+# List of hooks that kernelci will try to synchronize
+
+# Ex:
+# - name: name-of-the-hook
+#   url: http[s]://where.to.send:port/path
+#   method: post(default)|put
+#   token: the-token
+#   hooks:
+#     boot:  # specify a url for boot hook, leave blank for default hook url
+#     build: # specify a url for build hook, leave blank for default hook url
+#     lava:  # specify a url for lava hook, leave blank for default hook url
+
+# Everytime there's a new lava/boot/build file coming in, kernelci will send a request with the method specified and content-type as json
+
+
+- name: experimental-elk
+  url: http://192.168.15.13:8338
+  hooks:
+    boot: http://192.168.15.13:8007
+    build: http://192.168.15.13:8337
+    lava: http://192.168.15.13:8338
+

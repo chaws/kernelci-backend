@@ -16,10 +16,15 @@
 import taskqueue.celery as taskc
 import utils
 import utils.callback
+import utils.log
+
+LOG = utils.log.get_log()
+
 
 
 @taskc.app.task(name="lava-boot")
 def lava_boot(json_obj, job_meta, lab_name):
+    utils.LOG.warn('lalalalalala-lava_boot' * 42)
     """Add boot data from a LAVA v2 boot job callback
 
     This is a wrapper around the actual function which runs in a Celery task.
@@ -27,6 +32,8 @@ def lava_boot(json_obj, job_meta, lab_name):
     :param json_obj: The JSON object with the values necessary to import the
     LAVA boot data.
     :type json_obj: dictionary
+    :param job_meta: The name of the LAVA lab that posted the callback.
+    :type job_meta: string
     :param lab_name: The name of the LAVA lab that posted the callback.
     :type lab_name: string
     :return ObjectId The boot document object id.
@@ -37,6 +44,7 @@ def lava_boot(json_obj, job_meta, lab_name):
 
 @taskc.app.task(name="lava-test")
 def lava_test(json_obj, job_meta, lab_name):
+    utils.LOG.warn('lalalalalala-lava_test' * 42)
     """Add test data from a LAVA v2 test job callback
 
     This is a wrapper around the actual function which runs in a Celery task.

@@ -22,6 +22,7 @@ from collections import OrderedDict
 
 import utils
 import utils.boot
+import utils.hooks
 import utils.kci_test
 import utils.db
 import utils.lava_log_parser
@@ -375,6 +376,7 @@ def add_boot(job_data, job_meta, lab_name, db_options,
         _get_lava_meta(meta, job_data)
         _store_lava_json(job_data, meta)
         _add_test_log(meta, job_data["log"], "boot")
+        utils.hooks.lava(job_data)
         doc_id = utils.boot.import_and_save_boot(meta, db_options)
     except (yaml.YAMLError, ValueError) as ex:
         ret_code = 400

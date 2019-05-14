@@ -13,7 +13,7 @@
 
 """Celery configuration values."""
 
-BROKER_URL = "redis://localhost/0"
+BROKER_URL = "redis://redis/0"
 BROKER_POOL_LIMIT = 250
 BROKER_TRANSPORT_OPTIONS = {
     "visibility_timeout": 24000,
@@ -30,7 +30,7 @@ CELERY_TIMEZONE = "UTC"
 CELERY_ENABLE_UTC = True
 CELERY_IGNORE_RESULT = False
 CELERY_DISABLE_RATE_LIMITS = True
-CELERY_RESULT_BACKEND = "redis://localhost/0"
+CELERY_RESULT_BACKEND = "redis://redis/0"
 CELERY_REDIS_MAX_CONNECTIONS = 250
 # Custom log format.
 CELERYD_LOG_FORMAT = '[%(levelname)8s/%(threadName)10s] %(message)s'
